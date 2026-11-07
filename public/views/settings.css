@@ -1,0 +1,275 @@
+/* 设置页 */
+
+.settings {
+  display: grid;
+  gap: 18px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.settings-card {
+  display: grid;
+  gap: 16px;
+  padding: 22px 22px 20px;
+}
+
+.settings-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+.settings-head h3 {
+  font-size: 16.5px;
+  line-height: 1.4;
+}
+.settings-head .small { margin-top: 3px; }
+
+/* ---------- 封面 ---------- */
+.settings-cover {
+  position: relative;
+  height: 148px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(242, 100, 63, .16), transparent 55%),
+    radial-gradient(circle at 12% 88%, rgba(124, 154, 115, .18), transparent 58%),
+    #F6EEE3;
+  border: 1px solid var(--line);
+  transition: filter .18s;
+}
+.settings-cover:hover { filter: brightness(.97); }
+.settings-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.settings-cover-hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 24px;
+  text-align: center;
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+.settings-cover-edit {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(43, 33, 28, .58);
+  color: #fff;
+  font-size: 11.5px;
+  letter-spacing: .02em;
+  backdrop-filter: blur(4px);
+}
+
+/* ---------- 头像 + 字段 ---------- */
+.settings-profile {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.settings-avatar-col { padding-top: 2px; }
+
+.settings-avatar {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 0;
+}
+.settings-avatar-edit {
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  transform: translateX(-50%);
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 10.5px;
+  line-height: 1.6;
+  white-space: nowrap;
+  opacity: .88;
+}
+.settings-avatar:hover .settings-avatar-edit { background: var(--coral); opacity: 1; }
+
+.settings-fields {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.settings-fields textarea { min-height: 96px; }
+
+.settings-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.settings-count {
+  font-size: 11px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------- 毛孩子列表 ---------- */
+.settings-pets {
+  display: grid;
+  gap: 9px;
+}
+
+.settings-pets-empty {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 20px 18px;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  background: #FCF8F2;
+}
+.settings-pets-empty p { margin: 0; max-width: 34em; line-height: 1.85; }
+
+.settings-pet {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 13px;
+  align-items: center;
+  padding: 11px 13px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  cursor: pointer;
+  transition: background .16s, border-color .16s, transform .16s;
+}
+.settings-pet:hover {
+  background: #FDF9F3;
+  border-color: #E2D4C2;
+  transform: translateY(-1px);
+}
+
+.settings-pet-main { min-width: 0; }
+.settings-pet-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.settings-pet-species {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--ink-3);
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #F5EEE4;
+}
+.settings-pet-meta {
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: var(--ink-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.settings-pet-acts {
+  display: flex;
+  gap: 4px;
+  opacity: .55;
+  transition: opacity .16s;
+}
+.settings-pet:hover .settings-pet-acts { opacity: 1; }
+
+/* 弹窗里的宠物照片 */
+.settings-pet-photo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.settings-pet-photo {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #FCF8F2;
+  cursor: pointer;
+}
+.settings-pet-photo:hover { border-color: var(--coral); }
+.settings-pet-photo .small { line-height: 1.4; }
+
+/* ---------- 安全 + 会话并排 ---------- */
+.settings-two {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.settings-session {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px 13px;
+  border-radius: 16px;
+  background: #FCF8F2;
+  border: 1px solid var(--line);
+}
+.settings-session-main { min-width: 0; }
+.settings-session-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .settings-two { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .settings { gap: 14px; }
+  .settings-card { padding: 18px 16px 16px; gap: 14px; }
+  .settings-cover { height: 118px; }
+  .settings-profile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: start;
+  }
+  .settings-avatar-col { justify-self: center; }
+  .settings-fields { width: 100%; }
+  .settings-pet {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: 8px;
+  }
+  .settings-pet-acts {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    opacity: 1;
+  }
+  .settings-actions { justify-content: stretch; }
+  .settings-actions .btn { flex: 1 1 auto; }
+}

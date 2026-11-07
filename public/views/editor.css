@@ -1,0 +1,116 @@
+/* ---------- 素材库 ---------- */
+.editor-page { display: grid; gap: 16px; }
+.asset-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; margin-top: 6px;
+}
+.asset-card {
+  background: #F8F3EB; border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
+  display: grid; grid-template-rows: 1fr auto;
+}
+.asset-card .asset-pic {
+  position: relative; height: 140px; display: grid; place-items: center; overflow: hidden;
+  background: repeating-conic-gradient(#EFE7DC 0% 25%, #F7F2EA 0% 50%) 50% / 14px 14px;
+}
+.asset-card .asset-pic img { width: 100%; height: 100%; object-fit: cover; }
+.asset-card.is-sticker .asset-pic img,
+.asset-card.is-frame .asset-pic img { object-fit: contain; padding: 8px; }
+.asset-card .asset-name {
+  position: absolute; left: 6px; right: 6px; bottom: 6px;
+  font-size: 10.5px; color: var(--ink-2); background: rgba(255,255,255,.86);
+  border-radius: 8px; padding: 1px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.asset-bar { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 7px 9px; }
+.asset-bar .btn { padding: 4px 7px; font-size: 12px; white-space: nowrap; flex: none; }
+
+/* ---------- 合成器 ---------- */
+.comp-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 268px; gap: 18px; align-items: start; }
+.comp-stage-wrap { position: relative; min-width: 0; display: grid; gap: 8px; }
+.comp-stage {
+  position: relative; overflow: hidden; border-radius: 14px; background: #F1E8DC;
+  align-self: start; aspect-ratio: 4 / 5; touch-action: none;
+  max-height: 64vh; margin-inline: auto; width: 100%;
+}
+.comp-stage > * { touch-action: none; }
+@media (min-width: 761px) { .comp-stage { width: auto; height: 62vh; } }
+.comp-base { width: 100%; height: 100%; object-fit: cover; }
+.comp-overlay { position: absolute; inset: 0; }
+.comp-layer {
+  position: absolute; cursor: grab; user-select: none; -webkit-user-drag: none;
+  filter: drop-shadow(0 4px 10px rgba(43,33,28,.18)); touch-action: none;
+}
+.comp-layer:active { cursor: grabbing; }
+.comp-layer.sel { filter: drop-shadow(0 4px 10px rgba(43,33,28,.18)) drop-shadow(0 0 0 var(--coral)); }
+.comp-sel {
+  position: absolute; pointer-events: none; border: 1.5px dashed var(--coral);
+  border-radius: 4px; box-sizing: border-box;
+}
+.comp-handle {
+  position: absolute; width: 14px; height: 14px; border-radius: 50%; padding: 0;
+  background: #fff; border: 2px solid var(--coral); pointer-events: auto; touch-action: none;
+}
+.comp-handle.tl { left: -7px; top: -7px; cursor: nwse-resize; }
+.comp-handle.tr { right: -7px; top: -7px; cursor: nesw-resize; }
+.comp-handle.bl { left: -7px; bottom: -7px; cursor: nesw-resize; }
+.comp-handle.br { right: -7px; bottom: -7px; cursor: nwse-resize; }
+.comp-handle.rot {
+  left: 50%; top: -30px; transform: translateX(-50%); width: 16px; height: 16px;
+  border-radius: 50%; background: var(--coral); border-color: #fff; cursor: grab;
+}
+.comp-handle.rot::after {
+  content: ""; position: absolute; left: 50%; top: 14px; width: 1.5px; height: 14px;
+  background: var(--coral); transform: translateX(-50%);
+}
+.comp-frame-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+
+.comp-hint { font-size: 11.5px; color: var(--ink-3); text-align: center; }
+
+.comp-stage.frame-rounded { border-radius: 22px; }
+.comp-stage.frame-polaroid { border: 10px solid #fff; border-bottom-width: 34px; box-shadow: var(--shadow); border-radius: 3px; }
+.comp-stage.frame-inset { box-shadow: inset 0 0 0 10px #fff; }
+.comp-stage.frame-tape::after {
+  content: ""; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+  width: 84px; height: 22px; background: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.85);
+  pointer-events: none;
+}
+.comp-stage.frame-blur .comp-base { filter: saturate(1.06) contrast(1.02); }
+
+/* 右侧面板：手机上变成底部横向面板，舞台始终留在视口里 */
+.comp-side { display: flex; flex-direction: column; gap: 14px; max-height: 64vh; overflow: auto; padding-right: 2px; }
+.comp-topbar { display: flex; align-items: center; gap: 8px; }
+.comp-title { font-family: var(--serif); font-size: 16px; font-weight: 700; flex: 1; }
+.comp-group { display: grid; gap: 8px; }
+.comp-label { font-size: 11.5px; letter-spacing: .1em; color: var(--ink-3); }
+.comp-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.comp-thumb {
+  width: 100%; aspect-ratio: 1/1; object-fit: contain; cursor: pointer; padding: 3px;
+  border-radius: 10px; border: 1px solid var(--line);
+  background: repeating-conic-gradient(#EFE7DC 0% 25%, #F8F3EB 0% 50%) 50% / 10px 10px;
+}
+.comp-thumb:hover { border-color: var(--coral); }
+.comp-thumb.sel { border-color: var(--coral); box-shadow: 0 0 0 2px var(--coral-soft); }
+.comp-slider { display: grid; grid-template-columns: 34px 1fr 44px; align-items: center; gap: 8px; }
+.comp-slider input[type=range] { width: 100%; accent-color: var(--coral); }
+.comp-val { font-size: 12px; color: var(--ink-3); text-align: right; font-variant-numeric: tabular-nums; }
+.comp-selected { border-top: 1px dashed var(--line); padding-top: 12px; }
+.upload-label { cursor: pointer; justify-content: center; }
+
+@media (max-width: 760px) {
+  /* 手机上合成器是贴底抽屉：去掉内边距，让画布尽量大，操作区在下面独立滚动 */
+  .modal.modal-comp { padding: 0; }
+  .modal.modal-comp .modal-head { padding: 12px 16px; background: var(--card); }
+  .modal.modal-comp .modal-body { padding: 0 0 6px; }
+  .modal.modal-comp .modal-foot {
+    position: sticky; bottom: 0; margin: 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: var(--card); border-top: 1px solid var(--line); z-index: 5;
+  }
+  .comp-wrap { grid-template-columns: 1fr; gap: 8px; }
+  .comp-stage-wrap { padding: 0 12px; }
+  .comp-stage { max-height: 50vh; height: 50vh; width: auto; margin: 0 auto; }
+  .comp-side {
+    max-height: 40vh; overflow: auto; display: flex; flex-direction: column;
+    padding: 0 12px 4px; gap: 10px;
+  }
+  .comp-topbar { position: sticky; bottom: 0; }
+  .comp-thumbs { grid-template-columns: repeat(6, 1fr); }
+  .comp-slider { grid-template-columns: 30px 1fr 40px; }
+}

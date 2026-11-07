@@ -1,0 +1,11 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.aab
+# keystore 随仓库放（自签名、仅侧载），所以不忽略；产物 apk 在 ../dist 下

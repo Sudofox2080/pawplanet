@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">爪爪星球</string>
+
+    <!-- 站点地址：部署好服务后改成你自己的地址，例如 http://<你的域名或IP>:4780/ -->
+    <string name="base_url" translatable="false">http://10.0.2.2:4780/</string>
+
+    <string name="splash_hint">正在加载爪爪星球…</string>
+    <string name="error_title">页面走丢了</string>
+    <string name="error_message">没能连上爪爪星球，检查一下网络再试。</string>
+    <string name="error_detail">错误信息：%1$s</string>
+    <string name="error_retry">重新加载</string>
+    <string name="press_again_to_exit">再按一次退出</string>
+    <string name="no_file_picker">没有找到可用的图片选择器</string>
+    <string name="no_app_for_link">没有可以打开这个链接的应用：%1$s</string>
+</resources>

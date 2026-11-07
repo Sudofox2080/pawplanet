@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 品牌色板：浅米底 + 珊瑚主色 -->
+    <color name="bg">#FBF6EE</color>
+    <color name="brand_coral">#F2643F</color>
+    <color name="brand_coral_dark">#D94E2C</color>
+    <color name="text_primary">#2B2320</color>
+    <color name="text_secondary">#6B5E56</color>
+    <color name="white">#FFFFFF</color>
+</resources>

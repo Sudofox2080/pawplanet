@@ -1,0 +1,13 @@
+.post-page { display: grid; gap: 14px; }
+.cmt-section { padding: 16px 18px 8px; }
+.cmt-composer { display: flex; gap: 10px; align-items: flex-start; padding: 10px; background: #F9F5EE; border-radius: 16px; margin: 10px 0 6px; }
+.cmt-composer textarea { min-height: 46px; border: none; background: transparent; padding: 6px 4px; }
+.cmt-composer textarea:focus { box-shadow: none; }
+.cmt-composer .btn { align-self: flex-end; }
+.cmt-list { display: grid; }
+.cmt-section .cmt { border-top: 1px solid var(--line); }
+.cmt-section .cmt:first-child { border-top: none; }
+
+@media (max-width: 720px) {
+  .cmt-section { padding: 14px 14px 6px; }
+}

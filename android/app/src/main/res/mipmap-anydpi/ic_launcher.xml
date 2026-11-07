@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- API 24–25 的降级图标（这两个版本不支持 adaptive-icon）：珊瑚圆角方块 + 白色爪印 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#F2643F"
+        android:pathData="M18,0 L90,0 A18,18 0 0 1 108,18 L108,90 A18,18 0 0 1 90,108 L18,108 A18,18 0 0 1 0,90 L0,18 A18,18 0 0 1 18,0 Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M33,67 a21,16.5 0 1,0 42,0 a21,16.5 0 1,0 -42,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M22.5,45 a8.5,8.5 0 1,0 17,0 a8.5,8.5 0 1,0 -17,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M37,33.5 a8.5,8.5 0 1,0 17,0 a8.5,8.5 0 1,0 -17,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,33.5 a8.5,8.5 0 1,0 17,0 a8.5,8.5 0 1,0 -17,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M68.5,45 a8.5,8.5 0 1,0 17,0 a8.5,8.5 0 1,0 -17,0" />
+</vector>

@@ -1,0 +1,25 @@
+{
+  "name": "pawplanet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Paw Planet — 多用户宠物记录与社交小站（Node 内置 http + node:sqlite，零第三方依赖）",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/e2e.js",
+    "test:assets": "node test/assets-check.js",
+    "seed": "node tools/seed-demo.js",
+    "check:refs": "node tools/check-refs.js"
+  },
+  "keywords": [
+    "pet",
+    "diary",
+    "social",
+    "sqlite",
+    "webview"
+  ],
+  "license": "MIT"
+}

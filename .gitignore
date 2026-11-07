@@ -1,0 +1,31 @@
+node_modules/
+
+# 运行数据：数据库与上传的图片都不进版本库（data/demo 里的演示素材保留）
+data/app.db
+data/app.db-journal
+data/app.db-wal
+data/app.db-shm
+data/uploads/
+data/test-*/
+data/backup-*/
+
+# 本地配置：R2 密钥等
+.env
+.env.local
+
+# 本地验证产物
+.chrome-prof/
+shots/
+*.log
+
+# Android 构建产物与本地 SDK 路径
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/keystore/
+*.apk
+*.aab
+
+.DS_Store

@@ -1,0 +1,29 @@
+#!/bin/sh
+# 爪爪星球 Android 壳工程的 Gradle 启动脚本。
+# 说明：仓库里没有提交 gradle-wrapper.jar（二进制），所以这里做了两级兜底：
+#   1. 如果 gradle/wrapper/gradle-wrapper.jar 存在，就用标准 wrapper 启动；
+#   2. 否则退回系统 PATH 上的 gradle（README 里给了 `gradle wrapper` 生成 jar 的命令）。
+set -e
+
+APP_HOME=$(cd "$(dirname "$0")" && pwd)
+WRAPPER_JAR="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+
+if [ -n "$JAVA_HOME" ] && [ -x "$JAVA_HOME/bin/java" ]; then
+    JAVACMD="$JAVA_HOME/bin/java"
+else
+    JAVACMD=java
+fi
+
+if [ -f "$WRAPPER_JAR" ]; then
+    exec "$JAVACMD" ${DEFAULT_JVM_OPTS:-} -Dorg.gradle.appname=gradlew \
+        -classpath "$WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
+fi
+
+if command -v gradle >/dev/null 2>&1; then
+    exec gradle "$@"
+fi
+
+echo "找不到 gradle-wrapper.jar，也没有系统 gradle。" >&2
+echo "请先安装 Gradle 8.7，然后在工程根目录执行：gradle wrapper --gradle-version 8.7" >&2
+echo "生成 gradle/wrapper/gradle-wrapper.jar 之后，就可以用 ./gradlew 构建了。" >&2
+exit 1

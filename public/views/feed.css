@@ -1,0 +1,86 @@
+.feed-page { display: grid; gap: 16px; }
+.feed-tabs { margin-bottom: 2px; }
+.feed-list { display: grid; gap: 16px; }
+.feed-sentinel { height: 1px; }
+.feed-end { text-align: center; padding: 8px 0 20px; text-decoration: underline dotted; }
+
+.composer-teaser {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+}
+.composer-fake {
+  flex: 1; padding: 10px 16px; border-radius: 999px; background: #F7F1E8;
+  color: var(--ink-3); font-size: 14px; transition: background .16s;
+}
+.composer-fake:hover { background: #F2EADE; }
+.feed-guest { display: flex; }
+
+/* ---------- 帖子卡片 ---------- */
+.post { padding: 16px 18px 12px; cursor: default; transition: transform .18s, box-shadow .18s; animation: cardIn .28s ease both; }
+.post:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+@keyframes cardIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.post-head { display: flex; align-items: flex-start; gap: 10px; }
+.post-who { min-width: 0; flex: 1; }
+.post-name { font-weight: 600; font-size: 14.5px; }
+.post-name:hover { color: var(--coral); }
+.post-meta { font-size: 11.5px; color: var(--ink-3); display: flex; gap: 4px; flex-wrap: wrap; margin-top: 1px; }
+.pill-tag.pet { background: var(--sage-soft); color: #4F6848; }
+.post-menu { margin-top: -4px; }
+.post-body {
+  margin: 10px 0 12px; font-size: 14.8px; line-height: 1.72;
+  white-space: pre-wrap; word-break: break-word; color: var(--ink);
+}
+/* 单图按原始比例铺满卡片宽度，不裁切、不留死白 */
+.post-single { margin: 0 0 10px; }
+.post-single .photo-frame { width: 100%; max-height: 620px; border-radius: 16px; }
+.post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+.post-grid .photo-frame { aspect-ratio: 1 / 1; }
+.post-grid.two { grid-template-columns: 1fr 1fr; }
+.post-grid.three { grid-template-columns: 1fr 1fr; }
+.post-grid.three .photo-frame:first-child { grid-row: span 2; aspect-ratio: auto; }
+.post-grid .photo-frame { transition: transform .18s ease; }
+.post-grid .photo-frame:hover { transform: scale(1.012); }
+
+.repost-block {
+  display: block; background: #F8F3EB; border-radius: 14px; padding: 10px 12px; margin-bottom: 10px;
+  border: 1px solid var(--line); transition: background .16s;
+}
+.repost-block:hover { background: #F4ECE0; }
+.repost-thumb { margin-top: 6px; border-radius: 10px; overflow: hidden; max-width: 140px; }
+.repost-thumb img { height: 100px; width: 100%; object-fit: cover; }
+
+.post-acts { display: flex; align-items: center; gap: 6px; padding-top: 4px; }
+.post-act {
+  display: inline-flex; align-items: center; gap: 5px; border: none; background: transparent;
+  color: var(--ink-3); font-size: 12.5px; padding: 6px 9px; border-radius: 999px;
+  transition: background .16s, color .16s, transform .12s;
+}
+.post-act:hover { background: #F7F1E8; color: var(--ink); }
+.post-act:active { transform: scale(.94); }
+.post-act .g { font-size: 14px; display: inline-block; }
+.post-act.like.on .g { animation: heartPop .36s cubic-bezier(.2,1.6,.5,1); }
+@keyframes heartPop { 0% { transform: scale(1) } 40% { transform: scale(1.45) } 100% { transform: scale(1) } }
+.post-act.like.on { color: var(--coral); font-weight: 600; }
+.post-act.on { color: var(--sage); }
+
+.post-cmts { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); display: grid; gap: 4px; }
+.cmt-line { font-size: 13px; color: var(--ink-2); }
+.cmt-name { font-weight: 600; color: var(--ink); }
+.cmt-line .cmt-name:hover { color: var(--coral); }
+
+/* 评论列表（详情页） */
+.cmt { display: flex; gap: 9px; padding: 9px 0; }
+.cmt-body { flex: 1; min-width: 0; }
+.cmt-head { display: flex; align-items: baseline; gap: 8px; }
+.cmt-name { font-size: 13.5px; font-weight: 600; }
+.cmt-time { font-size: 11.5px; color: var(--ink-3); }
+.cmt-text { font-size: 14px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; }
+.cmt-del { border: none; background: transparent; color: var(--ink-3); font-size: 11.5px; padding: 0; }
+.cmt-del:hover { color: var(--coral); text-decoration: underline; }
+
+.repost-quote { background: #F8F3EB; border-radius: 12px; padding: 10px 12px; }
+
+@media (max-width: 720px) {
+  .post { padding: 14px 14px 10px; }
+  .composer-fake { font-size: 13px; }
+  .post-grid { gap: 4px; }
+}

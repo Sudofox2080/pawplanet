@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>爪爪星球 · 毛孩子的共同记忆</title>
+  <meta name="description" content="记录宠物日常、分享照片、和好友一起见证毛孩子长大。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/views/feed.css" />
+  <link rel="stylesheet" href="/views/post.css" />
+  <link rel="stylesheet" href="/views/profile.css" />
+  <link rel="stylesheet" href="/views/records.css" />
+  <link rel="stylesheet" href="/views/journal.css" />
+  <link rel="stylesheet" href="/views/tasks.css" />
+  <link rel="stylesheet" href="/views/friends.css" />
+  <link rel="stylesheet" href="/views/editor.css" />
+  <link rel="stylesheet" href="/views/create.css" />
+  <link rel="stylesheet" href="/views/login.css" />
+  <link rel="stylesheet" href="/views/settings.css" />
+  <link rel="stylesheet" href="/views/search.css" />
+  <link rel="stylesheet" href="/views/lightbox.css" />
+</head>
+<body>
+  <div id="shell" class="shell" hidden>
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main" id="view"></main>
+    <nav class="tabbar" id="tabbar"></nav>
+  </div>
+  <div id="boot" class="boot">
+    <div class="boot-paw">🐾</div>
+    <div class="boot-text">爪爪星球加载中…</div>
+  </div>
+  <div id="toast-root" class="toast-root"></div>
+  <div id="modal-root"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
