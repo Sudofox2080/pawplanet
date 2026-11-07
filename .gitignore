@@ -27,5 +27,7 @@ android/.idea/
 android/keystore/
 *.apk
 *.aab
+# 仓库自带的成品包（dist 里只放这一个，方便直接下载安装）
+!dist/pawplanet-1.0.0.apk
 
 .DS_Store
