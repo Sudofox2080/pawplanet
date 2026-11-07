@@ -38,13 +38,14 @@ node tools/r2-migrate.js --apply    # 真搬，逐个校验公开地址后更新
 node tools/r2-migrate.js --apply --delete-local   # 顺带删本地副本
 ```
 
-自检（会在库里插一行临时素材，跑完删掉）：
+自检：
 
 ```bash
-node tools/r2-smoke.js
+node tools/r2-check.js    # 配置/列举/上传/删除 四项逐条验，明确告诉你是「只能读」还是「连读都不通」
+node tools/r2-smoke.js    # 会在库里插一行临时素材验证 urlFor/302，跑完删掉
 ```
 
-注意：迁移需要 Access Key 具备 **Object Read & Write** 权限；只有读权限时 `PUT` 会返回 `403 AccessDenied`，脚本会明确提示。
+注意：迁移需要 Access Key 具备 **Object Read & Write** 权限。只有读权限时 `PUT` 返回 `403 AccessDenied`（签名错则是 `SignatureDoesNotMatch`，两者可区分），`r2-check.js` 会把这种情况单独报出来。
 
 ## Android App
 
