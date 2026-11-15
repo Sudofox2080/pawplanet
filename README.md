@@ -1,16 +1,28 @@
 # 爪爪星球 · Paw Planet
 
-一个给多人和多只毛孩子用的记录 + 社交小站。零第三方依赖，一个 Node 进程 + SQLite 就能跑。
+一个给多人和多只毛孩子用的记录 + 社交小站。零 npm 依赖，一个 Node 进程 + SQLite 就能跑；同时提供 Android WebView 客户端。
 
-## 跑起来
+[功能](#功能) · [快速开始](#快速开始) · [图片存储](#图片存储本地磁盘-或-cloudflare-r2) · [Android App](#android-app) · [测试](#测试) · [部署](#部署)
+
+## 快速开始
+
+运行环境：**Node.js 22.5 或更高版本**（项目使用内置的 `node:sqlite`）。项目没有第三方 npm 包，不需要执行 `npm install`。
 
 ```bash
 cd pawplanet
-node server.js
+npm start                 # 等价于 node server.js
 # 打开 http://127.0.0.1:4780
 ```
 
-环境变量：`PORT`（默认 4780）、`DATA_DIR`（默认 `./data`，数据库 `app.db` 和上传的图片都在这里）。
+首次启动会自动创建数据库和上传目录。常用环境变量：
+
+| 变量 | 默认值 | 说明 |
+| --- | --- | --- |
+| `HOST` | `0.0.0.0` | 服务监听地址 |
+| `PORT` | `4780` | 服务端口 |
+| `DATA_DIR` | `./data` | SQLite 数据库、上传文件及备份所在目录 |
+
+建议开发和测试时使用独立的 `DATA_DIR`，避免覆盖已有数据。
 
 ## 图片存储：本地磁盘 或 Cloudflare R2
 
@@ -52,6 +64,8 @@ node tools/r2-smoke.js    # 会在库里插一行临时素材验证 urlFor/302�
 源码在 `android/`，是一个单 Activity 的 WebView 壳，站点更新后 App 不用重发版。
 
 改站点地址只需改 `android/app/src/main/res/values/strings.xml` 里的 `base_url`（默认是模拟器访问宿主机的 `http://10.0.2.2:4780/`），然后 `assembleDebug` / `assembleRelease`，详见 [android/README.md](android/README.md)。
+
+仓库同时提供可直接安装的 [`dist/pawplanet-1.0.0.apk`](dist/pawplanet-1.0.0.apk)。该包内置的服务地址以打包时配置为准；自行部署后建议按上面的说明重新构建。
 
 演示数据（可选，服务需要已经在跑）：
 
@@ -137,15 +151,18 @@ pawplanet/
 ## 测试
 
 ```bash
-node server.js &          # 另开一个终端也行
-node test/e2e.js          # 40 条断言：注册、登录、可见性、好友、任务、权限边界
+DATA_DIR=./data-test PORT=4799 node server.js
+BASE=http://127.0.0.1:4799 npm test
+SITE=http://127.0.0.1:4799 npm run seed
+BASE=http://127.0.0.1:4799 npm run test:assets
+npm run check:refs
 ```
+
+端到端测试覆盖注册、登录、可见性、好友、任务和权限边界。素材回归依赖 `alice / secret123` 及其帖子，因此先写入演示数据；`test:assets` 会覆盖素材尺寸、图层宽高比及删除后的引用清理。
 
 浏览器里的几条自检要先开着 headless Chrome（端口 9333，见下），再执行 `node tools/ui-check.js`（发布链路）、`node tools/flow-check.js`（十条交互流程，10/10 通过）、`node tools/overflow-check.js --width 390`（十二个页面在手机宽度下不允许横向溢出）、`node tools/asset-delete-ui.js`（素材删除：浏览器点删除 → 确认 → 真的消失）。
 
 `node test/assets-check.js` 是素材库的后端回归：上传一张 60×120 的非方形透明 PNG，验证记录的真实宽高、挂到帖子图层后带出宽高比、删除后引用它的 layout 被清理。
-
-对着另一套数据跑：`DATA_DIR=./data-test PORT=4799 node server.js` 然后 `BASE=http://127.0.0.1:4799 node test/e2e.js`。
 
 辅助脚本：
 
